@@ -1,0 +1,39 @@
+       +--------------+
+ROT1-S |  PB12  GND   | N/A
+ROT1-D |  PB13  GND   | N/A
+ROT1-C |  PB14  3V3   | N/A
+ROT0-S |  PB15  RST   | N/A
+ROT0-D |  PA08  PB11  | ROW3
+ROT0-C |  PA09  PB10  |	ROW2
+       |  PA10  PB01  |	ROW1
+USB-   |  PA11  PB00  |	COL1
+USB+   |  PA12  PA07  | POT1
+       |  PA15  PA06  | POT2
+       |  PB03  PA05  |	COL2
+       |  PB04  PA04  | COL3
+       |  PB05  PA03  | COL4
+COMMTX |  PB06  PA02  | COL5
+ROW6   |  PB07  PA01  | COL6
+ROW5   |  PB08  PA00  | COL7
+ROW4   |  PB09  PC15  | OSC OUT ?
+USB5V  |  5V    PC14  | OSC IN  ?
+N/A    |  GND   PC13  | LED
+N/A    |  3V3   VBAT  | N/A
+       +--------------+
+         3  PA  PA  G
+	 V  13  14  N
+	 3          D
+
+            ?   ?
+
+
+scanlines = 7 columns x 6 rows -> 41 pins
+
+41 buttons in scanlines
+5 buttons from triple states
+6 buttons in 2 encoders
+4 buttons in 2 analog axis
+2 analog axis
+
+total 56 buttons
+
