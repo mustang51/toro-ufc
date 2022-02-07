@@ -19,8 +19,9 @@ It comprises:
 
 ## Bill of materials
 
+TBD
+
 ## Pin assignments and key matrix
 
 [Pin assignments](doc/pin_assignments.md)
 
-TBD
