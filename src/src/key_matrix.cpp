@@ -7,19 +7,19 @@
 const unsigned int SCAN_MATRIX_MICROS = 100;
 const unsigned int FILTER_AMOUNT = 20;
 
-static uint8_t row_pins[] = {
-	PB1, PB10, PB11, PB9, PB8, PB7
-};
-
-static uint8_t rows = sizeof(row_pins);
-
 static uint8_t column_pins[] = {
-	PB0, PA5, PA4, PA3, PA2, PA1, PA0
+	PB1, PB10, PB11, PB9, PB8, PB7
 };
 
 static uint8_t columns = sizeof(column_pins);
 
-static uint8_t key_press[sizeof(row_pins)][sizeof(column_pins)] =
+static uint8_t row_pins[] = {
+	PB0, PA5, PA4, PA3, PA2, PA1, PA0
+};
+
+static uint8_t rows = sizeof(row_pins);
+
+static uint8_t key_press[sizeof(column_pins)][sizeof(row_pins)] =
 {
 	{26,  1,  2,  3, 13, 14,  6},
 	{ 7, 38, 31, 29, 28,  4,  5},
@@ -29,7 +29,7 @@ static uint8_t key_press[sizeof(row_pins)][sizeof(column_pins)] =
 	{19, 20, 21, 22, 23, 24, 25},
 };
 
-static uint8_t key_release[sizeof(row_pins)][sizeof(column_pins)] =
+static uint8_t key_release[sizeof(column_pins)][sizeof(row_pins)] =
 {
 	{0, 0, 0, 0, 0, 0, 0},
 	{0, 0, 0, 0, 0, 0, 0},
@@ -58,16 +58,16 @@ static bool scan_change = false;
 static uint8_t triples = sizeof(key_triple) / 3;
 static uint8_t fifths = sizeof(key_fifth) / 5;
 
-static bool scan_state[sizeof(row_pins)][sizeof(column_pins)];
+static bool scan_state[sizeof(column_pins)][sizeof(row_pins)];
 
-static int filter_state[sizeof(row_pins)][sizeof(column_pins)];
+static int filter_state[sizeof(column_pins)][sizeof(row_pins)];
 
-static uint8_t scan_column = 0;
+static uint8_t scan_row = 0;
 
 bool is_pressed(uint8_t button)
 {
-	for (uint8_t r = 0; r < rows; r++) {
-		for (uint8_t c = 0; c < columns; c++) {
+	for (uint8_t r = 0; r < columns; r++) {
+		for (uint8_t c = 0; c < rows; c++) {
 			if (key_press[r][c] != button)
 				continue;
 			return !scan_state[r][c];
@@ -122,34 +122,34 @@ bool filter_position(bool level, uint8_t r, uint8_t c)
 	}
 }
 
-static void scan_position(uint8_t scan_row)
+static void scan_position(uint8_t scan_column)
 {
-	// scan the current row
-	bool level = digitalRead(row_pins[scan_row]);
+	// scan the current column
+	bool level = digitalRead(column_pins[scan_column]);
 
-	if (false == filter_position(level, scan_row, scan_column))
+	if (false == filter_position(level, scan_column, scan_row))
 		return;
 
-	scan_state[scan_row][scan_column] = level;
+	scan_state[scan_column][scan_row] = level;
 
 	if (LOW == level) { // key pressed
-		if (key_release[scan_row][scan_column] != 0) {
-			Joystick.setButton(key_release[scan_row][scan_column], false);
+		if (key_release[scan_column][scan_row] != 0) {
+			Joystick.setButton(key_release[scan_column][scan_row], false);
 			scan_change = true;
 		}
 
-		if (key_press[scan_row][scan_column] != 0) {
-			Joystick.setButton(key_press[scan_row][scan_column], true);
+		if (key_press[scan_column][scan_row] != 0) {
+			Joystick.setButton(key_press[scan_column][scan_row], true);
 			scan_change = true;
 		}
 	} else { // key released
-		if (key_press[scan_row][scan_column] != 0) {
-			Joystick.setButton(key_press[scan_row][scan_column], false);
+		if (key_press[scan_column][scan_row] != 0) {
+			Joystick.setButton(key_press[scan_column][scan_row], false);
 			scan_change = true;
 		}
 
-		if (key_release[scan_row][scan_column] != 0) {
-			Joystick.setButton(key_release[scan_row][scan_column], true);
+		if (key_release[scan_column][scan_row] != 0) {
+			Joystick.setButton(key_release[scan_column][scan_row], true);
 			scan_change = true;
 		}
 	}
@@ -192,46 +192,46 @@ void keymatrix_loop(void)
 
 	next_micros += SCAN_MATRIX_MICROS;
 
-	for (uint8_t scan_row = 0; scan_row < rows; scan_row++)
-		scan_position(scan_row);
+	for (uint8_t scan_column = 0; scan_column < columns; scan_column++)
+		scan_position(scan_column);
 
-	// starting new column, turn off the current one
-	digitalWrite(column_pins[scan_column], HIGH);
+	// starting new row, turn off the current one
+	digitalWrite(row_pins[scan_row], HIGH);
 
-	scan_column++;
-	if (scan_column >= columns) {
+	scan_row++;
+	if (scan_row >= rows) {
                 // full matrix scanned.
-		scan_column = 0;
+		scan_row = 0;
 		scan_triples();
 		scan_fifths();
 		scan_change = false;
 	}
 
 	// enable the next one and wait for next scan to stabilize
-	pinMode(column_pins[scan_column], OUTPUT);
-	digitalWrite(column_pins[scan_column], LOW);
+	pinMode(row_pins[scan_row], OUTPUT);
+	digitalWrite(row_pins[scan_row], LOW);
 
 	return;
 }
 
 void keymatrix_setup()
 {
-	for (unsigned int r = 0; r < rows; r++) {
-		for (unsigned int c = 0; c < columns; c++) {
+	for (unsigned int r = 0; r < columns; r++) {
+		for (unsigned int c = 0; c < rows; c++) {
 			filter_state[r][c] = 0;
 			scan_state[r][c] = true;
 		}
 	}
 
-	for (unsigned int r = 0; r < rows; r++)
-		pinMode(row_pins[r], INPUT_PULLUP);
+	for (unsigned int r = 0; r < columns; r++)
+		pinMode(column_pins[r], INPUT_PULLUP);
 
-	for (unsigned int c = 0; c < columns; c++) {
-		pinMode(column_pins[c], OUTPUT);
-		digitalWrite(column_pins[c], HIGH);
+	for (unsigned int c = 0; c < rows; c++) {
+		pinMode(row_pins[c], OUTPUT);
+		digitalWrite(row_pins[c], HIGH);
 	}
 
-	// prepare the first column to be scanned
-	pinMode(column_pins[0], OUTPUT);
-	digitalWrite(column_pins[0], LOW);
+	// prepare the first row to be scanned
+	pinMode(row_pins[0], OUTPUT);
+	digitalWrite(row_pins[0], LOW);
 }
