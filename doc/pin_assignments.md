@@ -43,29 +43,29 @@ scan buttons:
 
 
 
-         R1    R2    R3    R4    R5    R6    R7    R8
-       +-----+-----+-----+-----+-----+-----+-----+-----+
-     C1|NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |
-       |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |
-       +-----+-----+-----+-----+-----+-----+-----+-----+
-     C2|NPAD |NPAD |NPAD |NPAD | HAT | HAT | HAT | HAT |
-       |  9  |  0  | C   | E   |  N  |  S  |  W  |  E  |
-       +-----+-----+-----+-----+-----+-----+-----+-----+
-     C3|LPAD |LPAD |LPAD |LPAD |LPAD |BIG1 |BIG2 |     |
-       | F1  | F2  | F3  | F4  | F5  |     |     |     |
-       +-----+-----+-----+-----+-----+-----+-----+-----+
-     C4|RPAD |RPAD |RPAD |RPAD |RPAD |A/A  |A/G  |     |
-       | F1  | F2  | F3  | F4  | F5  |     |     |     |
-       +-----+-----+-----+-----+-----+-----+-----+-----+
-     C5|HPAD |HPAD |HPAD |HPAD |HPAD |HPAD |HPAD |     |
-       | F1  | F2  | F3  | F4  | F5  | F6  | ON  |     |
-       +-----+-----+-----+-----+-----+-----+-----+-----+
-     C6|RKR1 |RKR1 |RKR2 |RKR2 |RKR3 |RKR3 |RKR4 |RKR4 |
-       | UP  | DN  | UP  | DN  | UP  | DN  | UP  | DN  |
-       +-----+-----+-----+-----+-----+-----+-----+-----+
-     C7|LVR1 |LVR1 |LVR2 |LVR2 |ENC1 |ENC2 |     |     |
-       | UP  | DN  | UP  | DN  |PUSH |PUSH |     |     |
-       +-----+-----+-----+-----+-----+-----+-----+-----+
+    x     R1    R2    R3    R4    R5    R6    R7    R8
+    x   +-----+-----+-----+-----+-----+-----+-----+-----+
+    x C1|NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |
+    x   |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |
+    x   +-----+-----+-----+-----+-----+-----+-----+-----+
+    x C2|NPAD |NPAD |NPAD |NPAD | HAT | HAT | HAT | HAT |
+    x   |  9  |  0  | C   | E   |  N  |  S  |  W  |  E  |
+    x   +-----+-----+-----+-----+-----+-----+-----+-----+
+    x C3|LPAD |LPAD |LPAD |LPAD |LPAD |BIG1 |BIG2 |     |
+    x   | F1  | F2  | F3  | F4  | F5  |     |     |     |
+    x   +-----+-----+-----+-----+-----+-----+-----+-----+
+    x C4|RPAD |RPAD |RPAD |RPAD |RPAD |A/A  |A/G  |     |
+    x   | F1  | F2  | F3  | F4  | F5  |     |     |     |
+    x   +-----+-----+-----+-----+-----+-----+-----+-----+
+    x C5|HPAD |HPAD |HPAD |HPAD |HPAD |HPAD |HPAD |     |
+    x   | F1  | F2  | F3  | F4  | F5  | F6  | ON  |     |
+    x   +-----+-----+-----+-----+-----+-----+-----+-----+
+    x C6|RKR1 |RKR1 |RKR2 |RKR2 |RKR3 |RKR3 |RKR4 |RKR4 |
+    x   | UP  | DN  | UP  | DN  | UP  | DN  | UP  | DN  |
+    x   +-----+-----+-----+-----+-----+-----+-----+-----+
+    x C7|LVR1 |LVR1 |LVR2 |LVR2 |ENC1 |ENC2 |     |     |
+    x   | UP  | DN  | UP  | DN  |PUSH |PUSH |     |     |
+    x   +-----+-----+-----+-----+-----+-----+-----+-----+
 
 
 * NPAD: numerical pad
