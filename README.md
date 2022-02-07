@@ -17,3 +17,6 @@ It comprises:
 * 4 way dobber lever.
 * 6 analog axis (4 lateral, 2 frontal).
 
+## Bill of materials
+
+TBD
