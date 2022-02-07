@@ -72,7 +72,7 @@ static void usbSetConfiguration(void);
 static void usbSetDeviceAddress(void);
 
 #define LEAFLABS_ID_VENDOR                0xF005
-#define MAPLE_ID_PRODUCT                  0x002B
+#define MAPLE_ID_PRODUCT                  0x004b
 #define USB_DEVICE_CLASS              	  0x00
 #define USB_DEVICE_SUBCLASS	           	  0x00
 #define DEVICE_PROTOCOL					  0x01
@@ -140,18 +140,18 @@ static const usb_descriptor_string usbHIDDescriptor_LangID = {
     .bString         = {0x09, 0x04},
 };
 
-#define default_iManufacturer_length 8
+#define default_iManufacturer_length 4
 const usb_descriptor_string usb_generic_default_iManufacturer = {
     .bLength         = USB_DESCRIPTOR_STRING_LEN(default_iManufacturer_length),
     .bDescriptorType = USB_DESCRIPTOR_TYPE_STRING,
-    .bString         = {'C', 0, 'o', 0, 'l', 0, 'i', 0, 'b', 0, 'r', 0, 'i', 0, 's', 0},
+    .bString         = {'T', 0, 'o', 0, 'r', 0, 'o', 0},
 };
 
-#define default_iProduct_length 8
+#define default_iProduct_length 3
 const usb_descriptor_string usb_generic_default_iProduct = {
     .bLength         = USB_DESCRIPTOR_STRING_LEN(default_iProduct_length),
     .bDescriptorType = USB_DESCRIPTOR_TYPE_STRING,
-    .bString         = {'U', 0, 'f', 0, 'c', 0, '-', 0, 'P', 0, 'a', 0, 'l', 0, '2', 0},
+    .bString         = {'U', 0, 'f', 0, 'c', 0},
 };
 
 
