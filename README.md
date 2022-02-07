@@ -21,6 +21,6 @@ It comprises:
 
 ## Pin assignments
 
-[Pin assignments](https://github.com/mustang51/toro-ufc/main/doc/pin_assignments.md).
+[Pin assignments](doc/pin_assignments.md)
 
 TBD
