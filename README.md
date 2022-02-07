@@ -19,4 +19,8 @@ It comprises:
 
 ## Bill of materials
 
+## Pin assignments
+
+[Pin assignments](https://github.com/mustang51/toro-ufc/main/doc/pin_assignments.md).
+
 TBD
