@@ -41,7 +41,7 @@ scan buttons:
 * 2 push encoders (2)
 * total, 51 scan buttons
 
-
+## Matrix layout
 
     x     R1    R2    R3    R4    R5    R6    R7    R8
     x   +-----+-----+-----+-----+-----+-----+-----+-----+
