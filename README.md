@@ -19,7 +19,7 @@ It comprises:
 
 ## Bill of materials
 
-## Pin assignments
+## Pin assignments and key matrix
 
 [Pin assignments](doc/pin_assignments.md)
 

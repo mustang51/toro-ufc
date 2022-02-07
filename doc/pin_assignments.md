@@ -26,19 +26,20 @@
              V  13  14  N
              3          D
 
+# Key matrix
 
 scanlines = 8 rows x 7 columns -> 56 max
 
 scan buttons:
 
-29 keyboard switches    = 29
-2 triple lever switches =  4
-2 big buttons           =  2
-2 master mode           =  2
-4 rockers               =  8
-4-way hat               =  4
-2 push encoders         =  2
-total                   = 51 scan buttons
+* 29 keyboard switches (29)
+* 2 triple lever switches (4)
+* 2 big buttons (2)
+* 2 master mode (2)
+* 4 rockers (8)
+* 4-way hat (4)
+* 2 push encoders (2)
+* total, 51 scan buttons
 
 joystick buttons:
 
