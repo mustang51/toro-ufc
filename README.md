@@ -6,14 +6,14 @@ USB Up Front Controller, attempting to represent multiple cockpits (F/A-18, F-16
 
 It comprises:
 
-12 button numerical pad.
-10 button in both left and right vertical pads.
-7 button in horizontal pad.
-2 rotary encoders with push.
-2 big buttons.
-2 small buttons.
-4 rockers (up/down).
-2 triple position lever-switches, one with safety cover.
-4 way dobber lever.
-6 analog axis (4 lateral, 2 frontal).
+* 12 button numerical pad.
+* 10 button in both left and right vertical pads.
+* 7 button in horizontal pad.
+* 2 rotary encoders with push.
+* 2 big buttons.
+* 2 small buttons.
+* 4 rockers (up/down).
+* 2 triple position lever-switches, one with safety cover.
+* 4 way dobber lever.
+* 6 analog axis (4 lateral, 2 frontal).
 
