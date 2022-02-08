@@ -28,26 +28,26 @@ The distribution of rows and columns is as follows:
 
           R1    R2    R3    R4    R5    R6    R7    R8
         +-----+-----+-----+-----+-----+-----+-----+-----+
-     C1 |NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |
+     C1 |HPAD |HPAD |HPAD |HPAD |HPAD |HPAD |HPAD |     |
+        | F1  | F2  | F3  | F4  | F5  | F6  | ON  |     |
+        +-----+-----+-----+-----+-----+-----+-----+-----+
+     C2 |NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |
         |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |
         +-----+-----+-----+-----+-----+-----+-----+-----+
-     C2 |NPAD |NPAD |NPAD |NPAD | HAT | HAT | HAT | HAT |
-        |  9  |  0  | C   | E   |  N  |  S  |  W  |  E  |
+     C3 |NPAD |NPAD |NPAD |NPAD |BIG1 |BIG2 |BIG3 |BIG4 |
+        |  9  |  0  | C   | E   |     |     |     |     |
         +-----+-----+-----+-----+-----+-----+-----+-----+
-     C3 |LPAD |LPAD |LPAD |LPAD |LPAD |BIG1 |BIG2 |     |
+     C4 |LPAD |LPAD |LPAD |LPAD |LPAD |     |     |     |
         | F1  | F2  | F3  | F4  | F5  |     |     |     |
         +-----+-----+-----+-----+-----+-----+-----+-----+
-     C4 |RPAD |RPAD |RPAD |RPAD |RPAD |A/A  |A/G  |     |
+     C5 |RPAD |RPAD |RPAD |RPAD |RPAD |A/A  |A/G  |     |
         | F1  | F2  | F3  | F4  | F5  |     |     |     |
-        +-----+-----+-----+-----+-----+-----+-----+-----+
-     C5 |HPAD |HPAD |HPAD |HPAD |HPAD |HPAD |HPAD |     |
-        | F1  | F2  | F3  | F4  | F5  | F6  | ON  |     |
         +-----+-----+-----+-----+-----+-----+-----+-----+
      C6 |RKR1 |RKR1 |RKR2 |RKR2 |RKR3 |RKR3 |RKR4 |RKR4 |
         | UP  | DN  | UP  | DN  | UP  | DN  | UP  | DN  |
         +-----+-----+-----+-----+-----+-----+-----+-----+
-     C7 |LVR1 |LVR1 |LVR2 |LVR2 |BIG3 |BIG4 |     |     |
-        | UP  | DN  | UP  | DN  |     |     |     |     |
+     C7 |LVR1 |LVR1 |LVR2 |LVR2 | HAT | HAT | HAT | HAT |
+        | UP  | DN  | UP  | DN  |  N  |  S  |  W  |  E  |
         +-----+-----+-----+-----+-----+-----+-----+-----+
 
 * NPAD: numerical pad
@@ -60,32 +60,61 @@ The distribution of rows and columns is as follows:
 
 ## Connectors needed
 
+### Hand soldered
+
+* J1
+
+  * HAT : C7, R5 - R8 (5)
+
+* J2
+
+  * RKR1: C6, R1 - R2 (3)
+  * RKR2: C6, R3 - R4 (3)
+
+* J3
+
+  * RKR3: C6, R5 - R6 (3)
+  * RKR4: C6, R7 - R8 (3)
+
+* J4
+
+  * LVR1: C7, R1 - R2 (3)
+  * LVR2: C7, R3 - R4 (3)
+
+* J5
+
+  * A/A : C5, R6      (2)
+  * A/G : C5, R7      (2)
+  * BIG1: C3, R4      (2)
+
+* J6
+
+  * BIG2: C3, R5      (2)
+  * BIG3: C3, R6      (2)
+  * BIG4: C3, R7      (2)
+
+Total: 35 connections
+
 ### PCB to PCB bridges
 
-* NPAD: C1 - C2, R1 - R8 (10)
-* LPAD: C3, R1 - R5       (6)
-* RPAD: C4, R1 - R5       (6)
-* HPAD: C5, R1 - R7       (8)
+* J7
+
+  * NPAD: C2 - C3, R1 - R8 (10)
+
+* J8
+
+  * HPAD: C1, R1 - R7       (8)
+
+* J9
+
+  * LPAD: C4, R1 - R5       (6)
+
+* J10
+
+  * RPAD: C5, R1 - R5       (6)
 
 Total: 30 connections
 
-### Hand soldered
-
-* HAT : C2, R5 - R8 (5)
-* RKR1: C6, R1 - R2 (3)
-* RKR2: C6, R3 - R4 (3)
-* RKR3: C6, R5 - R6 (3)
-* RKR4: C6, R7 - R8 (3)
-* LVR1: C7, R1 - R2 (3)
-* LVR2: C7, R3 - R4 (3)
-* A/A : C4, R6      (2)
-* A/G : C4, R7      (2)
-* BIG1: C3, R6      (2)
-* BIG2: C3, R7      (2)
-* BIG3: C7, R5      (2)
-* BIG4: C7, R6      (2)
-
-Total: 35 connections
 
 ## Rest of connections
 
@@ -96,16 +125,15 @@ Total: 35 connections
 
 TBD
 
-
 ## STM32F103C8 pin assignments
 
 ![alt_text](https://github.com/mustang51/toro-ufc/blob/main/doc/Bluepillpinout.gif?raw=true)
 
            +--------------+
-    ROT1-D |  PB12  GND   | N/A
-    ROT1-C |  PB13  GND   | N/A
-    ROT2-D |  PB14  3V3   | N/A
-    ROT2-C |  PB15  RST   | N/A
+    REN1-D |  PB12  GND   | N/A
+    REN1-C |  PB13  GND   | N/A
+    REN2-D |  PB14  3V3   | N/A
+    REN2-C |  PB15  RST   | N/A
     COL7   |  PA08  PB11  | ROW6
     COL6   |  PA09  PB10  | ROW5
     COL5   |  PA10  PB01  | ROW4
@@ -118,8 +146,8 @@ TBD
     SCL    |  PB06  PA02  | POT3
     SDA    |  PB07  PA01  | POT2
     ROW8   |  PB08  PA00  | POT1
-    ROW7   |  PB09  PC15  | ROT1-S
-    USB5V  |  5V    PC14  | ROT2-S
+    ROW7   |  PB09  PC15  | REN1-S
+    USB5V  |  5V    PC14  | REN2-S
     N/A    |  GND   PC13  | LED
     N/A    |  3V3   VBAT  | N/A
            +--------------+
