@@ -1,5 +1,7 @@
 ## STM32F103C8 pin assignments
 
+![alt_text](https://github.com/mustang51/toro-ufc/blob/main/doc/Bluepillpinout.gif?raw=true)
+
            +--------------+
     ROT1-D |  PB12  GND   | N/A
     ROT1-C |  PB13  GND   | N/A
@@ -26,8 +28,6 @@
              V  13  14  N
              3          D
 
-![alt_text](https://github.com/mustang51/toro-ufc/blob/main/doc/Bluepillpinout.gif?raw=true)
-
 ## Key matrix
 
 scanlines = 8 rows x 7 columns -> 56 max
@@ -41,34 +41,34 @@ scan buttons:
 * 4 rockers (8)
 * 4-way hat (4)
 * 2 big lateral buttons (2)
-* total, 51 scan buttons
+
+Total: 51 scan buttons
 
 ## Matrix layout
 
-         R1    R2    R3    R4    R5    R6    R7    R8
-       +-----+-----+-----+-----+-----+-----+-----+-----+
-     C1|NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |
-       |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |
-       +-----+-----+-----+-----+-----+-----+-----+-----+
-     C2|NPAD |NPAD |NPAD |NPAD | HAT | HAT | HAT | HAT |
-       |  9  |  0  | C   | E   |  N  |  S  |  W  |  E  |
-       +-----+-----+-----+-----+-----+-----+-----+-----+
-     C3|LPAD |LPAD |LPAD |LPAD |LPAD |BIG1 |BIG2 |     |
-       | F1  | F2  | F3  | F4  | F5  |     |     |     |
-       +-----+-----+-----+-----+-----+-----+-----+-----+
-     C4|RPAD |RPAD |RPAD |RPAD |RPAD |A/A  |A/G  |     |
-       | F1  | F2  | F3  | F4  | F5  |     |     |     |
-       +-----+-----+-----+-----+-----+-----+-----+-----+
-     C5|HPAD |HPAD |HPAD |HPAD |HPAD |HPAD |HPAD |     |
-       | F1  | F2  | F3  | F4  | F5  | F6  | ON  |     |
-       +-----+-----+-----+-----+-----+-----+-----+-----+
-     C6|RKR1 |RKR1 |RKR2 |RKR2 |RKR3 |RKR3 |RKR4 |RKR4 |
-       | UP  | DN  | UP  | DN  | UP  | DN  | UP  | DN  |
-       +-----+-----+-----+-----+-----+-----+-----+-----+
-     C7|LVR1 |LVR1 |LVR2 |LVR2 |BIG3 |BIG4 |     |     |
-       | UP  | DN  | UP  | DN  |     |     |     |     |
-       +-----+-----+-----+-----+-----+-----+-----+-----+
-
+          R1    R2    R3    R4    R5    R6    R7    R8
+        +-----+-----+-----+-----+-----+-----+-----+-----+
+     C1 |NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |
+        |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |
+        +-----+-----+-----+-----+-----+-----+-----+-----+
+     C2 |NPAD |NPAD |NPAD |NPAD | HAT | HAT | HAT | HAT |
+        |  9  |  0  | C   | E   |  N  |  S  |  W  |  E  |
+        +-----+-----+-----+-----+-----+-----+-----+-----+
+     C3 |LPAD |LPAD |LPAD |LPAD |LPAD |BIG1 |BIG2 |     |
+        | F1  | F2  | F3  | F4  | F5  |     |     |     |
+        +-----+-----+-----+-----+-----+-----+-----+-----+
+     C4 |RPAD |RPAD |RPAD |RPAD |RPAD |A/A  |A/G  |     |
+        | F1  | F2  | F3  | F4  | F5  |     |     |     |
+        +-----+-----+-----+-----+-----+-----+-----+-----+
+     C5 |HPAD |HPAD |HPAD |HPAD |HPAD |HPAD |HPAD |     |
+        | F1  | F2  | F3  | F4  | F5  | F6  | ON  |     |
+        +-----+-----+-----+-----+-----+-----+-----+-----+
+     C6 |RKR1 |RKR1 |RKR2 |RKR2 |RKR3 |RKR3 |RKR4 |RKR4 |
+        | UP  | DN  | UP  | DN  | UP  | DN  | UP  | DN  |
+        +-----+-----+-----+-----+-----+-----+-----+-----+
+     C7 |LVR1 |LVR1 |LVR2 |LVR2 |BIG3 |BIG4 |     |     |
+        | UP  | DN  | UP  | DN  |     |     |     |     |
+        +-----+-----+-----+-----+-----+-----+-----+-----+
 
 * NPAD: numerical pad
 * LPAD: left function buttons
@@ -80,10 +80,39 @@ scan buttons:
 
 ## Connectors needed
 
+### Circuit to circuit bridges
 
+* NPAD: C1 - C2, R1 - R8 (10)
+* LPAD: C3, R1 - R5       (6)
+* RPAD: C4, R1 - R5       (6)
+* HPAD: C5, R1 - R7       (8)
 
+Total: 30 connections
 
-## Joystick buttons and axis:
+### Hand soldered
+
+* HAT : C2, R5 - R8 (5)
+* RKR1: C6, R1 - R2 (3)
+* RKR2: C6, R3 - R4 (3)
+* RKR3: C6, R5 - R6 (3)
+* RKR4: C6, R7 - R8 (3)
+* LVR1: C7, R1 - R2 (3)
+* LVR2: C7, R3 - R4 (3)
+* A/A : C4, R6      (2)
+* A/G : C4, R7      (2)
+* BIG1: C3, R6      (2)
+* BIG2: C3, R7      (2)
+* BIG3: C7, R5      (2)
+* BIG4: C7, R6      (2)
+
+Total: 35 connections
+
+## Rest of connections
+
+* 6 analog axis, two frontal and four lateral.
+* 2 rotary encoders, with push.
+
+## Joystick buttons and axis
 
 TBD
 
