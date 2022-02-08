@@ -1,6 +1,6 @@
 ## Key matrix
 
-![How does a key matrix work?](https://en.wikipedia.org/wiki/Keyboard_matrix_circuit)
+[How does a key matrix work?](https://en.wikipedia.org/wiki/Keyboard_matrix_circuit)
 
 Buttons to scan in the matrix:
 
