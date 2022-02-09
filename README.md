@@ -17,11 +17,10 @@ It comprises:
 * 4 way dobber lever.
 * 6 analog axis (4 lateral, 2 frontal).
 
-## Bill of materials
-
-TBD
-
 ## Pin assignments and key matrix
 
 [Pin assignments](doc/pin_assignments.md)
 
+## Bill of materials
+
+TBD
