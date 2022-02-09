@@ -85,13 +85,13 @@ The distribution of rows and columns is as follows:
 
   * A/A : C5, R6      (2)
   * A/G : C5, R7      (2)
-  * BIG1: C3, R4      (2)
+  * BIG1: C3, R5      (2)
 
 * J6
 
-  * BIG2: C3, R5      (2)
-  * BIG3: C3, R6      (2)
-  * BIG4: C3, R7      (2)
+  * BIG2: C3, R6      (2)
+  * BIG3: C3, R7      (2)
+  * BIG4: C3, R8      (2)
 
 Total: 35 connections
 
