@@ -163,22 +163,22 @@ TBD
 ![alt_text](https://github.com/mustang51/toro-ufc/blob/main/doc/Bluepillpinout.gif?raw=true)
 
            +--------------+
-    REN1-D |  PB12  GND   | N/A
-    REN1-C |  PB13  GND   | N/A
-    REN2-D |  PB14  3V3   | N/A
-    REN2-C |  PB15  RST   | N/A
-    COL7   |  PA08  PB11  | ROW6
-    COL6   |  PA09  PB10  | ROW5
-    COL5   |  PA10  PB01  | ROW4
-    USB-   |  PA11  PB00  | ROW3
-    USB+   |  PA12  PA07  | ROW2
-    COL4   |  PA15  PA06  | ROW1
+    REN1-C |  PB12  GND   | N/A
+    REN1-D |  PB13  GND   | N/A
+    REN2-C |  PB14  3V3   | N/A
+    REN2-D |  PB15  RST   | N/A
+    COL7   |  PA08  PB11  | ROW1
+    COL6   |  PA09  PB10  | ROW2
+    COL5   |  PA10  PB01  | ROW3
+    USB-   |  PA11  PB00  | ROW4
+    USB+   |  PA12  PA07  | ROW6
+    COL4   |  PA15  PA06  | ROW5
     COL3   |  PB03  PA05  | POT6
     COL2   |  PB04  PA04  | POT5
     COL1   |  PB05  PA03  | POT4
-    SCL    |  PB06  PA02  | POT3
+    SCL    |  PB06  PA02  | POT1
     SDA    |  PB07  PA01  | POT2
-    ROW8   |  PB08  PA00  | POT1
+    ROW8   |  PB08  PA00  | POT3
     ROW7   |  PB09  PC15  | REN1-S
     USB5V  |  5V    PC14  | REN2-S
     N/A    |  GND   PC13  | LED
