@@ -3,4 +3,5 @@
 /src/tool/tool
 /src/tool/usb
 /fw/.pio/
-/pcb/fp-info-cache
+toroufc*backups/
+fp-info-cache
