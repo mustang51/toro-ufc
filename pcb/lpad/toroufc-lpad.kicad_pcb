@@ -135,7 +135,7 @@
       (net 10 "/COL4") (pinfunction "1") (pintype "passive") (tstamp ab82dc85-56d0-46be-900d-0664f3b5abd5))
     (pad "2" thru_hole circle locked (at 2.54 -5.08) (size 2.5 2.5) (drill 1.5) (layers *.Cu "B.Mask")
       (net 7 "Net-(SW4-Pad2)") (pinfunction "2") (pintype "passive") (tstamp 1c0411e2-9bd8-49c3-9d1e-d39ec3c65508))
-    (model "/tmp/cherry/keyswitch-kicad-library-main/library/3dmodels/3d-library.3dshapes/SW_Cherry_MX_PCB.wrl"
+    (model "${KIPRJMOD}/packages3D/SW_Cherry_MX_PCB.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -190,7 +190,7 @@
       (net 10 "/COL4") (pinfunction "1") (pintype "passive") (tstamp 4b5d1677-64a5-44e8-a84e-8b7beed6097e))
     (pad "2" thru_hole circle locked (at 2.54 -5.08) (size 2.5 2.5) (drill 1.5) (layers *.Cu "B.Mask")
       (net 3 "Net-(SW2-Pad2)") (pinfunction "2") (pintype "passive") (tstamp f8c94a0d-8abf-4291-a723-ffac2fd73bf0))
-    (model "/tmp/cherry/keyswitch-kicad-library-main/library/3dmodels/3d-library.3dshapes/SW_Cherry_MX_PCB.wrl"
+    (model "${KIPRJMOD}/packages3D/SW_Cherry_MX_PCB.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -245,7 +245,7 @@
       (net 10 "/COL4") (pinfunction "1") (pintype "passive") (tstamp 2705d545-6223-40c2-9cab-cb1a290f1036))
     (pad "2" thru_hole circle locked (at 2.54 -5.08) (size 2.5 2.5) (drill 1.5) (layers *.Cu "B.Mask")
       (net 11 "Net-(SW5-Pad2)") (pinfunction "2") (pintype "passive") (tstamp cfb319ba-93ed-4129-a60e-62c7de3e9d2f))
-    (model "/tmp/cherry/keyswitch-kicad-library-main/library/3dmodels/3d-library.3dshapes/SW_Cherry_MX_PCB.wrl"
+    (model "${KIPRJMOD}/packages3D/SW_Cherry_MX_PCB.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -300,7 +300,7 @@
       (net 10 "/COL4") (pinfunction "1") (pintype "passive") (tstamp 97cc60a7-a38e-4430-8692-c201d3f04f84))
     (pad "2" thru_hole circle locked (at 2.54 -5.08) (size 2.5 2.5) (drill 1.5) (layers *.Cu "B.Mask")
       (net 1 "Net-(SW1-Pad2)") (pinfunction "2") (pintype "passive") (tstamp bdd0a17f-f5e0-4377-8aec-b2ce67f369dd))
-    (model "/tmp/cherry/keyswitch-kicad-library-main/library/3dmodels/3d-library.3dshapes/SW_Cherry_MX_PCB.wrl"
+    (model "${KIPRJMOD}/packages3D/SW_Cherry_MX_PCB.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -355,7 +355,7 @@
       (net 10 "/COL4") (pinfunction "1") (pintype "passive") (tstamp 9bc14efc-b938-464b-ad2d-0100c712c816))
     (pad "2" thru_hole circle locked (at 2.54 -5.08) (size 2.5 2.5) (drill 1.5) (layers *.Cu "B.Mask")
       (net 5 "Net-(SW3-Pad2)") (pinfunction "2") (pintype "passive") (tstamp c9f884c1-b255-4aa1-862e-22d07d61d7d9))
-    (model "/tmp/cherry/keyswitch-kicad-library-main/library/3dmodels/3d-library.3dshapes/SW_Cherry_MX_PCB.wrl"
+    (model "${KIPRJMOD}/packages3D/SW_Cherry_MX_PCB.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -405,7 +405,7 @@
       (net 9 "/ROW5") (pinfunction "K") (pintype "passive") (tstamp dc7bc960-086d-49db-8f0c-99b4cf5e738f))
     (pad "2" smd rect (at 1.65 0 90) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask")
       (net 11 "Net-(SW5-Pad2)") (pinfunction "A") (pintype "passive") (tstamp 41460646-8a61-452b-a7af-8f4bb7df7260))
-    (model "${KICAD6_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-123.wrl"
+    (model "${KIPRJMOD}/packages3D/D_SOD-123.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -479,7 +479,7 @@
       (net 8 "/ROW4") (pinfunction "Pin_5") (pintype "passive") (tstamp 34bb6293-e807-43e3-9122-8cf6396d3b83))
     (pad "6" thru_hole oval (at 12.5 0) (size 1.7 1.95) (drill 0.95) (layers *.Cu *.Mask)
       (net 9 "/ROW5") (pinfunction "Pin_6") (pintype "passive") (tstamp 322d7da6-d102-4b9a-89b6-31b51c45ba98))
-    (model "${KICAD6_3DMODEL_DIR}/Connector_JST.3dshapes/JST_XH_B6B-XH-A_1x06_P2.50mm_Vertical.wrl"
+    (model "${KIPRJMOD}/packages3D/JST_XH_B6B-XH-A_1x06_P2.50mm_Vertical.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -529,7 +529,7 @@
       (net 2 "/ROW1") (pinfunction "K") (pintype "passive") (tstamp 9266bbcd-1701-4f15-8de6-6685376a6393))
     (pad "2" smd rect (at 1.65 0 90) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask")
       (net 1 "Net-(SW1-Pad2)") (pinfunction "A") (pintype "passive") (tstamp a9dd2fe4-2036-4fbb-92c4-ed3ed5076407))
-    (model "${KICAD6_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-123.wrl"
+    (model "${KIPRJMOD}/packages3D/D_SOD-123.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -579,7 +579,7 @@
       (net 6 "/ROW3") (pinfunction "K") (pintype "passive") (tstamp 07a4caaa-dbcd-461e-927e-205ed3e49b90))
     (pad "2" smd rect (at 1.65 0 90) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask")
       (net 5 "Net-(SW3-Pad2)") (pinfunction "A") (pintype "passive") (tstamp 80713d8c-b668-464a-a6c6-e815c7f64e91))
-    (model "${KICAD6_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-123.wrl"
+    (model "${KIPRJMOD}/packages3D/D_SOD-123.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -629,7 +629,7 @@
       (net 8 "/ROW4") (pinfunction "K") (pintype "passive") (tstamp 811a285f-5af0-4aa6-9fbb-5199e5c3097f))
     (pad "2" smd rect (at 1.65 0 90) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask")
       (net 7 "Net-(SW4-Pad2)") (pinfunction "A") (pintype "passive") (tstamp aacabb17-af14-4859-a630-96da5297144d))
-    (model "${KICAD6_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-123.wrl"
+    (model "${KIPRJMOD}/packages3D/D_SOD-123.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -679,7 +679,7 @@
       (net 4 "/ROW2") (pinfunction "K") (pintype "passive") (tstamp 13cb961d-a929-4a4e-96b4-d8baa5072d52))
     (pad "2" smd rect (at 1.65 0 90) (size 0.9 1.2) (layers "B.Cu" "B.Paste" "B.Mask")
       (net 3 "Net-(SW2-Pad2)") (pinfunction "A") (pintype "passive") (tstamp 90cdef90-3174-4786-8a01-654438f84697))
-    (model "${KICAD6_3DMODEL_DIR}/Diode_SMD.3dshapes/D_SOD-123.wrl"
+    (model "${KIPRJMOD}/packages3D/D_SOD-123.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
