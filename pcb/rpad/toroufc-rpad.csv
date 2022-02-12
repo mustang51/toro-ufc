@@ -1,0 +1,29 @@
+"Source:","/Users/match/Documents/GitHub/toro-ufc/pcb/rpad/toroufc-rpad.kicad_sch"
+"Date:","2022 February 12, Saturday 08:29:01"
+"Tool:","Eeschema (6.0.1-0)"
+"Generator:","/Applications/KiCad/KiCad.app/Contents/SharedSupport/plugins/bom_csv_grouped_by_value.py"
+"Component Count:","11"
+
+"Individual Components:"
+
+"Item","Qty","Reference(s)","Value","LibPart","Footprint","Datasheet"
+"","","D1","1N4148W","Diode:1N4148W","Diode_SMD:D_SOD-123","https://www.vishay.com/docs/85748/1n4148w.pdf"
+"","","D2","1N4148W","Diode:1N4148W","Diode_SMD:D_SOD-123","https://www.vishay.com/docs/85748/1n4148w.pdf"
+"","","D3","1N4148W","Diode:1N4148W","Diode_SMD:D_SOD-123","https://www.vishay.com/docs/85748/1n4148w.pdf"
+"","","D4","1N4148W","Diode:1N4148W","Diode_SMD:D_SOD-123","https://www.vishay.com/docs/85748/1n4148w.pdf"
+"","","D5","1N4148W","Diode:1N4148W","Diode_SMD:D_SOD-123","https://www.vishay.com/docs/85748/1n4148w.pdf"
+"","","J10","Conn_01x06_Male","Connector:Conn_01x06_Male","Connector_JST:JST_XH_B6B-XH-A_1x06_P2.50mm_Vertical","~"
+"","","SW1","SW_Push","Switch:SW_Push","Switch_Keyboard_Cherry_MX:SW_Cherry_MX_PCB_1.00u","~"
+"","","SW2","SW_Push","Switch:SW_Push","Switch_Keyboard_Cherry_MX:SW_Cherry_MX_PCB_1.00u","~"
+"","","SW3","SW_Push","Switch:SW_Push","Switch_Keyboard_Cherry_MX:SW_Cherry_MX_PCB_1.00u","~"
+"","","SW4","SW_Push","Switch:SW_Push","Switch_Keyboard_Cherry_MX:SW_Cherry_MX_PCB_1.00u","~"
+"","","SW5","SW_Push","Switch:SW_Push","Switch_Keyboard_Cherry_MX:SW_Cherry_MX_PCB_1.00u","~"
+
+
+
+"Collated Components:"
+
+"Item","Qty","Reference(s)","Value","LibPart","Footprint","Datasheet"
+"1","5","D1, D2, D3, D4, D5","1N4148W","Diode:1N4148W","Diode_SMD:D_SOD-123","https://www.vishay.com/docs/85748/1n4148w.pdf"
+"2","1","J10","Conn_01x06_Male","Connector:Conn_01x06_Male","Connector_JST:JST_XH_B6B-XH-A_1x06_P2.50mm_Vertical","~"
+"3","5","SW1, SW2, SW3, SW4, SW5","SW_Push","Switch:SW_Push","Switch_Keyboard_Cherry_MX:SW_Cherry_MX_PCB_1.00u","~"
