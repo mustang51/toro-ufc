@@ -1,12 +1,15 @@
 // -*- mode: c++; c-file-style: "linux" -*-
 
 #include <Arduino.h>
-#include <libmaple/iwdg.h>
 
 #include "heartbeat.h"
 #include "misc.h"
 
-// #define WATCHDOG
+#define WATCHDOG
+
+#ifdef WATCHDOG
+#include <libmaple/iwdg.h>
+#endif
 
 #define BEAT_WAITING_MILLIS   700
 #define BEAT_SISTOLIC_MILLIS  100
@@ -28,7 +31,7 @@ void heartbeat_loop(void)
 	static unsigned long next_millis = 0;
 
 #ifdef WATCHDOG
-	iwdg_feed(); // have the wdt reset the chip
+	iwdg_feed(); // avoid the wdt reset the chip
 #endif
 	if (! time_expired_from(millis(), next_millis))
 		return;
@@ -74,7 +77,7 @@ void heartbeat_setup(void)
 	pinMode(LED_PIN, OUTPUT);
 
 #ifdef WATCHDOG
-	// 40 KHz clock, prescaled 32, count up to 2500, that is 2 sec.
-	iwdg_init(IWDG_PRE_32, 2500); // have the wdt reset the chip
+	// 40 KHz clock, prescaled 64, count up to 2500, that is 4 sec.
+	iwdg_init(IWDG_PRE_64, 2500); // have the wdt reset the chip
 #endif
 }

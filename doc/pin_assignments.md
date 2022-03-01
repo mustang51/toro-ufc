@@ -156,7 +156,16 @@ Total: 30 connections
 
 ## Joystick buttons and axis
 
-TBD
+* Key switches: 1 - 29
+* 4 rockers: 30 - 41
+* 4 way hat: 42, 43, 44, 45, 46
+* 2 triple levers: 47, 48, 49, 50, 51, 52
+* 2 big buttons: 53, 54, 55, 56
+* 2 big lateral buttons: 57, 58, 59, 60
+* 2 master mode: 61, 62,
+* 2 rotary encoders: 63, 64, 65, 66, 67, 68
+* 6 axis: 69 - 80
+
 
 ## STM32F103C8 pin assignments
 

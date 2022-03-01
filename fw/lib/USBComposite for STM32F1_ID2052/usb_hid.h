@@ -34,8 +34,9 @@
 #ifndef _USB_HID_H_
 #define _USB_HID_H_
 
-#include <libmaple/libmaple_types.h>
-#include <libmaple/usb.h>
+//#include <libmaple/libmaple_types.h>
+//#include <libmaple/usb.h>
+#include <stdint.h>
 #include "usb_generic.h"
 
 #define MAX_HID_BUFFERS 8

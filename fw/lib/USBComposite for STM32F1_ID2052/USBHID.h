@@ -1,17 +1,17 @@
-/* Copyright (c) 2011, Peter Barrett  
-**  
-** Permission to use, copy, modify, and/or distribute this software for  
-** any purpose with or without fee is hereby granted, provided that the  
-** above copyright notice and this permission notice appear in all copies.  
-** 
-** THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL  
-** WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED  
-** WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR  
-** BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES  
-** OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,  
-** WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,  
-** ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS  
-** SOFTWARE.  
+/* Copyright (c) 2011, Peter Barrett
+**
+** Permission to use, copy, modify, and/or distribute this software for
+** any purpose with or without fee is hereby granted, provided that the
+** above copyright notice and this permission notice appear in all copies.
+**
+** THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL
+** WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED
+** WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR
+** BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES
+** OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS,
+** WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,
+** ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS
+** SOFTWARE.
 */
 
 #ifndef _USBHID_H_
@@ -60,7 +60,7 @@
     0x75, 0x08,       /* REPORT_SIZE (8) */ \
     0x95, dataSize,       /* REPORT_COUNT (32) */ \
     0x91, 0x02,     /* OUTPUT (Data,Var,Abs) */ \
-    
+
 #define HID_CONSUMER_REPORT_DESCRIPTOR(...) \
     0x05, 0x0C,									/* usage page (consumer device) */ \
 	0x09, 0x01, 								/* usage -- consumer control */ \
@@ -74,8 +74,8 @@
 	0x95, 0x01, 								/* report count (1) */ \
 	0x81, 0x00, 								/* input */ \
     MACRO_ARGUMENT_2_TO_END(__VA_ARGS__)  \
-	0xC0 /* end collection */    
-    
+	0xC0 /* end collection */
+
 #define HID_MOUSE_REPORT_DESCRIPTOR(...) \
     0x05, 0x01,						/*  USAGE_PAGE (Generic Desktop)	// 54 */ \
     0x09, 0x02,						/*  USAGE (Mouse) */ \
@@ -102,7 +102,7 @@
     0x81, 0x06,						/*      INPUT (Data,Var,Rel) */ \
     0xc0,      						/*    END_COLLECTION */ \
     MACRO_ARGUMENT_2_TO_END(__VA_ARGS__)  \
-    0xc0      						/*  END_COLLECTION */ 
+    0xc0      						/*  END_COLLECTION */
 
 #define HID_ABS_MOUSE_REPORT_DESCRIPTOR(...) \
     0x05, 0x01,						/*  USAGE_PAGE (Generic Desktop)	// 54 */ \
@@ -135,7 +135,7 @@
     0x81, 0x06,						/*      INPUT (Data,Var,Rel) */ \
     0xc0,     						/*  END_COLLECTION */  \
     MACRO_ARGUMENT_2_TO_END(__VA_ARGS__)  \
-    0xc0      						/*  END_COLLECTION */ 
+    0xc0      						/*  END_COLLECTION */
 
 #define HID_KEYBOARD_REPORT_DESCRIPTOR(...) \
     0x05, 0x01,						/*  USAGE_PAGE (Generic Desktop)	// 47 */ \
@@ -173,7 +173,7 @@
 	0x91, 0x02,						 /*   OUTPUT (Data,Var,Abs) */    \
     MACRO_ARGUMENT_2_TO_END(__VA_ARGS__)  \
     0xc0      						/*  END_COLLECTION */
-    
+
 #define HID_BOOT_KEYBOARD_REPORT_DESCRIPTOR(...) \
     0x05, 0x01,						/*  USAGE_PAGE (Generic Desktop)	// 47 */ \
     0x09, 0x06,						/*  USAGE (Keyboard) */ \
@@ -214,73 +214,38 @@
 	0x05, 0x01,                    /* USAGE_PAGE (Generic Desktop) */ \
 		0x09, 0x04,                    /* USAGE (Joystick) */ \
 		0xa1, 0x01,                    /* COLLECTION (Application) */ \
-                0xa1, 0x00,                    /*   COLLECTION (Physical) */ \
 		0x85, 0x01,                    /*   REPORT_ID (1) */ \
+                0xa1, 0x00,                    /*   COLLECTION (Physical) */ \
 		0x09, 0x30,                    /*     USAGE (X) */ \
 		0x09, 0x31,                    /*     USAGE (Y) */ \
+		0x09, 0x32,                    /*     USAGE (Z) */ \
+                0x09, 0x33,                    /*     USAGE (RotX) */ \
+                0x09, 0x34,                    /*     USAGE (RotY) */ \
+                0x09, 0x35,                    /*     USAGE (RotZ) */ \
 		0x15, 0x00,                    /*     LOGICAL_MINIMUM (0) */ \
 		0x26, 0xff, 0x00,              /*     LOGICAL_MAXIMUM (255) */ \
 		0x75, 0x08,                    /*     REPORT_SIZE (8) */ \
-		0x95, 0x02,                    /*     REPORT_COUNT (2) */ \
+		0x95, 0x06,                    /*     REPORT_COUNT (6) */ \
 		0x81, 0x02,                    /*     INPUT (Data,Var,Abs) */ \
+ 		0xc0,                          /*   END_COLLECTION */ \
+                0xa1, 0x00,                    /*   COLLECTION (Physical) */ \
 		0x05, 0x09,                    /*     USAGE_PAGE (Button) */ \
 		0x19, 0x01,                    /*     USAGE_MINIMUM (Button 1) */ \
-		0x29, 0x39,                    /*     USAGE_MAXIMUM (Button 57) */ \
+		0x29, 0x50,                    /*     USAGE_MAXIMUM (Button 80) */ \
 		0x15, 0x00,                    /*     LOGICAL_MINIMUM (0) */ \
 		0x25, 0x01,                    /*     LOGICAL_MAXIMUM (1) */ \
 		0x75, 0x01,                    /*     REPORT_SIZE (1) */ \
-		0x95, 0x40,                    /*     REPORT_COUNT (64) */ \
+		0x95, 0x60,                    /*     REPORT_COUNT (96) */ \
 		0x81, 0x02,                    /*     Input (Data, Variable, Absolute) */ \
- 		0xc0,                          /*   END_COLLECTION */ \
+ 		0xc0,                          /*   END_COLLECTION */	\
  		0xc0                           /* END_COLLECTION */
-
-/* 0x09, 0x33,                    /\*     USAGE (RotX) *\/ \ */
-/* 	0x09, 0x34,                    /\*     USAGE (RotY) *\/ \ */
-/* 	0x35, 0x00,                    /\*     PHYSICAL_MINIMUM (0) *\/ \ */
-/* 	0x46, 0xff, 0x00,              /\*     PHYSICAL_MAXIMUM (255) *\/ \ */
-/* 	0xa1, 0x02,                    /\*   COLLECTION (Logical) *\/ \ */
-/* 	0x85, 0x02,                    /\* REPORT_ID (2) *\/ \ */
-/* 	0xa1, 0x02,                    /\*   COLLECTION (Logical) *\/ \ */
-/* 	0xc0,                          /\*   END_COLLECTION *\/ \ */
-/* 	0x05, 0x01,						/\*  Usage Page (Generic Desktop) *\/ \ */
-/* 	0x09, 0x04,						/\*  Usage (Joystick) *\/ \ */
-/* 	0xA1, 0x01,						/\*  Collection (Application) *\/ \ */
-/* 	0x85, MACRO_GET_ARGUMENT_1_WITH_DEFAULT(HID_JOYSTICK_REPORT_ID, ## __VA_ARGS__),  /\*    REPORT_ID *\/ \ */
-/* 	0x15, 0x00,						/\* 	 Logical Minimum (0) *\/ \ */
-/* 	0x25, 0x01,						/\*    Logical Maximum (1) *\/ \ */
-/* 	0x75, 0x01,						/\*    Report Size (1) *\/ \ */
-/* 	0x95, 0x40,						/\*    Report Count (64) *\/ \ */
-/* 	0x05, 0x09,						/\*    Usage Page (Button) *\/ \ */
-/* 	0x19, 0x01,						/\*    Usage Minimum (Button #1) *\/ \ */
-/* 	0x29, 0x23,						/\*    Usage Maximum (Button #35) *\/ \ */
-/* 	0x81, 0x02,						/\*    Input (variable,absolute) *\/ \ */
-/* 	0x05, 0x01,                     /\*    Usage Page (Generic Desktop) *\/ \ */
-/* 	0x81, 0x42,						/\*    Input (variable,absolute,null_state) *\/ \ */
-/* 	0x05, 0x01,                     /\* Usage Page (Generic Desktop) *\/ \ */
-/* 	0xA1, 0x00,                     /\* Collection () *\/ \ */
-/* 	0x15, 0x00,						/\*    Logical Minimum (0) *\/ \ */
-/* 	0x25, 0xFF,				/\*    Logical Maximum (255) *\/ \ */
-/* 	0x75, 0x08,						/\*    Report Size (8) *\/ \ */
-/* 	0x95, 0x04,						/\*    Report Count (4) *\/ \ */
-/* 	0x09, 0x30,						/\*    Usage (X) *\/ \ */
-/* 	0x09, 0x31,						/\*    Usage (Y) *\/ \ */
-/* 	0x09, 0x33,						/\*    Usage (Rx) *\/ \ */
-/*     	0x09, 0x34,						/\*    Usage (Ry) *\/ \ */
-/*     	0x81, 0x02,						/\*    Input (variable,absolute) *\/ \ */
-/* 	0xC0,                           /\*  End Collection *\/ \ */
-/* 	MACRO_ARGUMENT_2_TO_END(__VA_ARGS__)  \ */
-/* 	0xC0 */
-/* 	0x09, 0x36,						/\*  Usage (Slider) *\/ \ */
-/* 	0x09, 0x36,						/\*  Usage (Slider) *\/ \ */
-/* 	0x09, 0x01,						/\* Usage (Pointer) *\/ \ */
-/* 	0x09, 0x39,						/\*    Usage (Hat switch) *\/ \ */
 
 
 #define RAWHID_USAGE_PAGE	0xFFC0 // recommended: 0xFF00 to 0xFFFF
 #define RAWHID_USAGE		0x0C00 // recommended: 0x0100 to 0xFFFF
-    
-#define LSB(x) ((x) & 0xFF)    
-#define MSB(x) (((x) & 0xFF00) >> 8)    
+
+#define LSB(x) ((x) & 0xFF)
+#define MSB(x) (((x) & 0xFF00) >> 8)
 // TODO: make this work for txSize > 255
 #define HID_RAW_REPORT_DESCRIPTOR(txSize, rxSize) \
 	0x06, LSB(RAWHID_USAGE_PAGE), MSB(RAWHID_USAGE_PAGE), \
@@ -301,11 +266,11 @@
 	0x96, LSB(rxSize), MSB(rxSize),				/*  report count RX */ \
 	0x09, 0x02,				/*  usage */ \
 	0x91, 0x02,				/*  OUTPUT (0x91) */ \
-	0xC0					/*  end collection */ 
-    
+	0xC0					/*  end collection */
+
 typedef struct {
     uint8_t* descriptor;
-    uint16_t length;    
+    uint16_t length;
 } HIDReportDescriptor;
 
 class USBHID {
@@ -334,10 +299,10 @@ public:
     }
     inline void setFeatureBuffers(volatile HIDBuffer_t* fb=NULL, int count=0) {
         setBuffers(HID_REPORT_TYPE_FEATURE, fb, count);
-    }        
+    }
     inline void setOutputBuffers(volatile HIDBuffer_t* fb=NULL, int count=0) {
         setBuffers(HID_REPORT_TYPE_OUTPUT, fb, count);
-    }     
+    }
     void end(void);
     void setTXPacketSize(uint32 size=64) {
         txPacketSize = size;
@@ -352,9 +317,9 @@ class HIDReporter {
 
     protected:
         USBHID& HID;
-        
+
     public:
-        void sendReport(); 
+        void sendReport();
         // if you use this init function, the buffer starts with a reportID, even if the reportID is zero,
         // and bufferSize includes the reportID; if reportID is zero, sendReport() will skip the initial
         // reportID byte
@@ -429,12 +394,12 @@ class HIDConsumer : public HIDReporter {
 protected:
     ConsumerReport_t report;
 public:
-    enum { 
-           BRIGHTNESS_UP = 0x6F, 
-           BRIGHTNESS_DOWN = 0x70, 
-           VOLUME_UP = 0xE9, 
+    enum {
+           BRIGHTNESS_UP = 0x6F,
+           BRIGHTNESS_DOWN = 0x70,
+           VOLUME_UP = 0xE9,
            VOLUME_DOWN = 0xEA,
-           MUTE = 0xE2, 
+           MUTE = 0xE2,
            PLAY_OR_PAUSE = 0xCD
            // see pages 75ff of http://www.usb.org/developers/hidpage/Hut1_12v2.pdf
            };
@@ -494,8 +459,8 @@ typedef struct{
 class HIDKeyboard : public Print, public HIDReporter {
 public:
 	KeyReport_t keyReport;
-    
-protected:    
+
+protected:
     uint8_t leds[HID_BUFFER_ALLOCATE_SIZE(1,1)];
     HIDBuffer_t ledData;
     uint8_t reportID;
@@ -503,7 +468,7 @@ protected:
     bool adjustForHostCapsLock = true;
 
 public:
-	HIDKeyboard(USBHID& HID, uint8_t _reportID=HID_KEYBOARD_REPORT_ID) : 
+	HIDKeyboard(USBHID& HID, uint8_t _reportID=HID_KEYBOARD_REPORT_ID) :
         HIDReporter(HID, (uint8*)&keyReport, sizeof(KeyReport_t), _reportID),
         ledData(leds, HID_BUFFER_SIZE(1,_reportID), _reportID, HID_BUFFER_MODE_NO_WAIT),
         reportID(_reportID)
@@ -531,12 +496,11 @@ public:
 // readable
 typedef struct {
     uint8_t reportID;
-    uint8_t axis[2];
-    // uint16_t debug[2];
-    uint64_t buttons;
+    uint8_t axis[6];
+    uint32_t buttons[3];
 } __packed JoystickReport_t;
 
-static_assert(sizeof(JoystickReport_t)==11, "Wrong endianness/packing!");
+static_assert(sizeof(JoystickReport_t) == 19, "Wrong endianness/packing!");
 
 class HIDJoystick : public HIDReporter {
 protected:
@@ -544,6 +508,7 @@ protected:
 	bool manualReport = false;
 	bool reportNeeded = true;
 	void safeSendReport(void);
+	void _setButton(uint8_t button, bool val, uint8_t stack);
 public:
 	inline void send(void) {
 		if (!reportNeeded)
@@ -558,14 +523,15 @@ public:
 	void setButton(uint8_t button, bool val);
 	void setAxis(uint8_t idx, uint8_t val);
 	// void setDebug(uint8_t idx, uint16_t val);
-	HIDJoystick(USBHID& HID, uint8_t reportID=HID_JOYSTICK_REPORT_ID) 
+	HIDJoystick(USBHID& HID, uint8_t reportID=HID_JOYSTICK_REPORT_ID)
 		: HIDReporter(HID, (uint8_t*)&joyReport, sizeof(joyReport), reportID) {
 		joyReport.reportID = 1;
-		joyReport.buttons = 0;
-		joyReport.axis[0] = 127;
-		joyReport.axis[1] = 127;
-		// joyReport.debug[0] = 0;
-		// joyReport.debug[1] = 0;
+		for (unsigned char i = 0; i < (sizeof(joyReport.buttons) /
+					       sizeof(joyReport.buttons[0])); i++)
+			joyReport.buttons[i] = 0;
+		for (unsigned char i = 0; i < (sizeof(joyReport.axis) /
+					       sizeof(joyReport.axis[0])); i++)
+			joyReport.axis[i] = 127;
 	}
 };
 
@@ -607,4 +573,3 @@ extern const HIDReportDescriptor* hidReportBootKeyboard;
 #define HID_BOOT_KEYBOARD           hidReportBootKeyboard
 
 #endif
-        		

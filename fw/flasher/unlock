@@ -1,0 +1,31 @@
+#!/bin/bash
+
+sleep 2
+echo "Press Reset, release in a few seconds when programming starts..."
+sleep 1
+echo "4"
+sleep 1
+echo "3"
+sleep 1
+echo "2"
+sleep 1
+echo "1"
+sleep 1
+
+
+~/.platformio/packages/tool-openocd/bin/openocd \
+	-s ~/.platformio/packages/tool-openocd \
+	-f scripts/interface/stlink.cfg \
+	-f scripts/target/stm32f1x.cfg & sleep 1
+
+expect << EOF
+spawn telnet localhost 4444
+expect "> "
+send "reset halt\r"
+expect "> "
+send "stm32f1x unlock 0\r"
+expect "> "
+send "reset halt\r"
+EOF
+
+kill %1
