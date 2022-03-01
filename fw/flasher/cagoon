@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+expect << EOF
+spawn telnet localhost 4444
+expect "> "
+send "reset halt\r"
+expect "> "
+send "stm32f1x unlock 0\r"
+expect "> "
+send "reset halt\r"
+EOF

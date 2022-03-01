@@ -4,16 +4,8 @@
 #include "ky040.h"
 #include "joystick.h"
 
-// Robust Rotary encoder reading
-//
-// Copyright John Main - best-microcontroller-projects.com
-//
-
-static const int8_t rot_enc_table[] = {
-	0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0
-};
-
-static Rotary *rotaries[Rotary::MAX_ROTARIES];
+static Rotary rotary0(0, PB13, PB12, PC15, 63 , 64 , 65 , true, true);
+static Rotary rotary1(1, PB15, PB14, PC14, 66 , 67 , 68 , true, true);
 
 bool Rotary::push(bool right)
 {
@@ -46,108 +38,70 @@ bool Rotary::pull(bool *right)
 	return true;
 }
 
-void Rotary::rotary_interrupt()
-{
-	prevNextCode <<= 2;
-	if (digitalRead(data)) prevNextCode |= 0x02;
-	if (digitalRead(clk))  prevNextCode |= 0x01;
-	prevNextCode &= 0x0f;
-
-	events++;
-
-	if (!rot_enc_table[prevNextCode] ) {
-		invalid_events++;
-		return;
-	}
-
-	store <<= 4;
-	store |= prevNextCode;
-	if (half_step) {
-		uint8_t magic = store & 0xff;
-
-		if      (magic == 0x2b) push(false);
-		else if (magic == 0xd4) push(false);
-		else if (magic == 0x17) push(true);
-		else if (magic == 0xe8) push(true);
-	} else {
-		if      (store == 0xd42b) push(false);
-		else if (store == 0xe817) push(true);
-	}
-}
-
-Rotary::Rotary(unsigned int index, unsigned int clk_pin, unsigned int data_pin,
-	       unsigned int sw_pin,
+Rotary::Rotary(unsigned int index,
+	       unsigned int clk, unsigned int data,
+	       unsigned int sw,
 	       unsigned int button_left, unsigned int button_right,
 	       unsigned int button_push,
 	       bool half_step, bool no_input_pullups) :
-	index(index), clk(clk_pin), data(data_pin),
-	sw(sw_pin),
+	index(index), clk_pin(clk), data_pin(data),
+	sw_pin(sw),
 	button_left(button_left), button_right(button_right),
 	button_push(button_push),
 	half_step(half_step), no_input_pullups(no_input_pullups),
-	prevNextCode(0), store(0), events(0), invalid_events(0),
-	overflow(false), filter(0),
-	state(IDLE), skip(0),
-	curpos(0), movement_read(0), movement_write(0)
+	events(0), overflow(false),
+	state(IDLE),
+	curpos(0),
+	filter_data(0), filter_clk(0), filter_sw(0),
+	movement_read(0), movement_write(0)
+{
+}
+
+void Rotary::setup()
 {
 	if (no_input_pullups) {
-		pinMode(clk, INPUT);
-		pinMode(data, INPUT);
+		pinMode(clk_pin, INPUT);
+		pinMode(data_pin, INPUT);
 	} else {
-		pinMode(clk, INPUT_PULLUP);
-		pinMode(data, INPUT_PULLUP);
+		pinMode(clk_pin, INPUT_PULLUP);
+		pinMode(data_pin, INPUT_PULLUP);
 	}
 
-	pinMode(sw, INPUT_PULLUP);
+	pinMode(sw_pin, INPUT_PULLUP);
 
-	if (digitalRead(data)) prevNextCode |= 0x02;
-	if (digitalRead(clk))  prevNextCode |= 0x01;
+	data = (digitalRead(data_pin) == 1) ? FILTER_AMOUNT : -FILTER_AMOUNT;
+	clk = (digitalRead(clk_pin) == 1) ? FILTER_AMOUNT : -FILTER_AMOUNT;
 }
 
-int16_t Rotary::position()
-{
-	noInterrupts();
-	int16_t pos = curpos;
-	interrupts();
-
-	return pos;
-}
-
-bool Rotary::filter_sw(bool level)
+bool Rotary::filter_sw_fn(bool level)
 {
 	if (level == HIGH) {
-		if (filter < 0) {
-			filter = 0;
+		if (filter_sw < 0) {
+			filter_sw = 0;
 			return false;
 		}
-
-		if (abs(filter) < FILTER_AMOUNT) {
-			filter++;
+		if (abs(filter_sw) < FILTER_AMOUNT) {
+			filter_sw++;
 			return false;
 		}
-
-		return true;
-
 	} else {
-		if (filter > 0) {
-			filter = 0;
+		if (filter_sw > 0) {
+			filter_sw = 0;
 			return false;
 		}
-
-		if (abs(filter) < FILTER_AMOUNT) {
-			filter--;
+		if (abs(filter_sw) < FILTER_AMOUNT) {
+			filter_sw--;
 			return false;
 		}
-
-		return true;
 	}
+	return true;
 }
 
 void Rotary::poll_sw()
 {
-	bool state = digitalRead(sw);
+	bool state = digitalRead(sw_pin);
 
-	if (false == filter_sw(state))
+	if (false == filter_sw_fn(state))
 		return;
 
 	Joystick.setButton(button_push, !state);
@@ -155,9 +109,52 @@ void Rotary::poll_sw()
 
 void Rotary::poll_encoder()
 {
+	char new_data = digitalRead(data_pin);
+	char new_clk = digitalRead(clk_pin);
+
+	if ((new_data == 1) && (filter_data < FILTER_AMOUNT))
+		filter_data++;
+	if ((new_data == 0) && (-filter_data < FILTER_AMOUNT))
+		filter_data--;
+
+	if ((new_clk == 1) && (filter_clk < FILTER_AMOUNT))
+		filter_clk++;
+	if ((new_clk == 0) && (-filter_clk < FILTER_AMOUNT))
+		filter_clk--;
+
+	if ((filter_data != FILTER_AMOUNT) && (filter_data != -FILTER_AMOUNT))
+		new_data = data;
+	else
+		new_data = filter_data;
+
+	if ((filter_clk != FILTER_AMOUNT) && (filter_clk != -FILTER_AMOUNT))
+		new_clk = clk;
+	else
+		new_clk = filter_clk;
+
+	if ((new_data == data) && (new_clk == clk))
+		return;
+
+	if (half_step) {
+		if (new_data != new_clk) {
+			events++;
+			if (new_data != data)
+				push(false);
+			else
+				push(true);
+		}
+	}
+
+	data = new_data;
+	clk  = new_clk;
+}
+
+void Rotary::poll_machine()
+{
+	unsigned long now = millis();
 	if (state != IDLE) {
 		// Button is held left or right, do we have to hold it down a bit?
-		if ((millis() - activity_ms) < TIME_UP)
+		if ((now - activity_ms) < TIME_UP)
 			return;
 	}
 
@@ -167,9 +164,7 @@ void Rotary::poll_encoder()
 		bool activity;
 		bool move_right;
 
-		noInterrupts();
 		activity = pull(&move_right);
-		interrupts();
 
 		if (!activity) {
 			if (overflow) {
@@ -189,41 +184,24 @@ void Rotary::poll_encoder()
 			if (!overflow)
 				Joystick.setButton(button_left, true);
 		}
-		activity_ms = millis();
+		activity_ms = now;
 	}
 	break;
 	case RIGHT_PRESSED:
-		if (!overflow)
+		if (!overflow) {
 			Joystick.setButton(button_right, false);
+		}
 		state = IDLE;
 		break;
 	case LEFT_PRESSED:
-		if (!overflow)
+		if (!overflow) {
 			Joystick.setButton(button_left, false);
+		}
 		state = IDLE;
 		break;
 	}
 
 	return;
-}
-
-#define NEWROTARY(INDEX, DATA, CLK, SW, BUTTON_LEFT, BUTTON_RIGHT, BUTTON_PUSH, HALF, PULLUPS) { \
-		rotaries[INDEX] = new Rotary(INDEX, DATA, CLK, SW, BUTTON_LEFT, BUTTON_RIGHT, BUTTON_PUSH, HALF, PULLUPS); \
-	attachInterrupt(digitalPinToInterrupt(DATA), \
-			[](){rotaries[INDEX]->rotary_interrupt();}, CHANGE); \
-	attachInterrupt(digitalPinToInterrupt(CLK), \
-			[](){rotaries[INDEX]->rotary_interrupt();}, CHANGE); \
-	}
-
-void Rotary::setup_all()
-{
-	NEWROTARY(0, PA8 , PA9 , PB15, 48 , 47 , 49 , true, true);
-	NEWROTARY(1, PB13, PB14, PB12, 51 , 50 , 52 , true, true);
-}
-
-void rotary_setup()
-{
-	Rotary::setup_all();
 }
 
 static void rotary_loop_sw(void)
@@ -233,8 +211,8 @@ static void rotary_loop_sw(void)
 		return;
 	next_millis += Rotary::POLL_SW_MS;
 
-	rotaries[0]->poll_sw();
-	rotaries[1]->poll_sw();
+	rotary0.poll_sw();
+	rotary1.poll_sw();
 
 	return;
 }
@@ -246,10 +224,19 @@ static void rotary_loop_enc(void)
 		return;
 	next_millis += Rotary::POLL_ROTARY_MS;
 
-	rotaries[0]->poll_encoder();
-	rotaries[1]->poll_encoder();
+	rotary0.poll_encoder();
+	rotary0.poll_machine();
+
+	rotary1.poll_encoder();
+	rotary1.poll_machine();
 
 	return;
+}
+
+void rotary_setup()
+{
+	rotary0.setup();
+	rotary1.setup();
 }
 
 void rotary_loop(void)

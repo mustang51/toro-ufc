@@ -7,7 +7,7 @@
 
 void setup()
 {
-	disableDebugPorts();
+//	disableDebugPorts();
 	heartbeat_setup();
 	joystick_setup();
 	rotary_setup();
@@ -18,10 +18,10 @@ void setup()
 void loop()
 {
 	heartbeat_loop();
-
 	analog_loop();
 	rotary_loop();
 	keymatrix_loop();
-
 	joystick_report();  // horribly slow and blocking :(
 }
+
+

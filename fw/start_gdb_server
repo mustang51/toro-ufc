@@ -1,0 +1,3 @@
+#!/bin/bash
+
+~/.platformio/packages/tool-openocd/bin/openocd -s ~/.platformio/packages/tool-openocd -f scripts/interface/stlink.cfg -c 'transport select hla_swd' -f scripts/target/stm32f1x.cfg

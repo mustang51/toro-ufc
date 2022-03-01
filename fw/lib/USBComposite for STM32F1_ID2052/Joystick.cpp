@@ -33,22 +33,33 @@ void HIDJoystick::safeSendReport()
 	}
 }
 
-void HIDJoystick::setButton(uint8_t button, bool val)
+void HIDJoystick::_setButton(uint8_t button, bool val, uint8_t stack)
 {
-	uint64_t mask;
-	uint64_t before = joyReport.buttons;
+	uint32_t mask;
+	uint32_t before = joyReport.buttons[stack];
 
-	mask = ((uint64_t) 1 << ((button - 1)));
+	mask = ((uint32_t) 1 << ((((uint32_t) button) - 1)));
 	if (val)
-		joyReport.buttons |= mask;
+		joyReport.buttons[stack] |= mask;
 	else
-		joyReport.buttons &= ~mask;
+		joyReport.buttons[stack] &= ~mask;
 
-	if (before != joyReport.buttons)
+	if (before != joyReport.buttons[stack])
 		reportNeeded = true;
 
 	safeSendReport();
 }
+
+void HIDJoystick::setButton(uint8_t button, bool val)
+{
+	if (button <= 32)
+		_setButton(button -  0, val, 0);
+	else if (button <= 64)
+		_setButton(button - 32, val, 1);
+	else if (button <= 96)
+		_setButton(button - 64, val, 2);
+}
+
 
 void HIDJoystick::setAxis(uint8_t idx, uint8_t val)
 {

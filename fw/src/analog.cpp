@@ -5,26 +5,34 @@
 #include "joystick.h"
 
 static const unsigned int ANALOG_POLL_MS = 20;
-static const float EMA_ALPHA = 0.3;
-static const uint8_t channels[] = {7, 6};
+
+static const unsigned long EMA_MAX   = 128;
+static const unsigned long EMA_ALPHA = 32;
+
+static const uint8_t channels[] = {2, 1, 0, 3, 5, 4};
 static const unsigned int analogs = sizeof(channels);
 static const uint8_t buttons[][2] = {
-	{53, 54},
-	{55, 56},
+	{69, 70},
+	{71, 72},
+	{73, 74},
+	{75, 76},
+	{77, 78},
+	{79, 80}
 };
 
-static float EMA_LP[] = {0, 0};
-static unsigned int values[] = {300, 300};
+static unsigned long EMA_LP[] = {0, 0, 0, 0, 0, 0};
+static unsigned int values[] = {300, 300, 300, 300, 300, 300};
 
-void ema_low_pass_filter(unsigned int index, float new_value)
+void ema_low_pass_filter(unsigned int index, unsigned long new_value)
 {
-	EMA_LP[index] = EMA_ALPHA * new_value + (1.0 - EMA_ALPHA) * EMA_LP[index];
+	EMA_LP[index] = (EMA_ALPHA * new_value +
+			 (EMA_MAX - EMA_ALPHA) * EMA_LP[index]) / EMA_MAX;
 }
 
 bool low_pass(unsigned int index)
 {
 	unsigned int current = values[index] * 16;
-	unsigned int ema = round(EMA_LP[index]);
+	unsigned int ema = EMA_LP[index];
 
 	if (abs(ema - current) < 32)
 		return false;
