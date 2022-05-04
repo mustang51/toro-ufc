@@ -9,8 +9,8 @@ Buttons to scan in the matrix:
 * 1 four-way hat (4)
 * 2 triple lever switches (4)
 * 2 big buttons (2)
-* 2 big lateral buttons (2)
 * 2 master mode (2)
+* 2 extra unconnected (2)
 
 Total: 51 scan buttons
 
@@ -34,7 +34,7 @@ The distribution of rows and columns is as follows:
      C2 |NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |NPAD |
         |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |
         +-----+-----+-----+-----+-----+-----+-----+-----+
-     C3 |NPAD |NPAD |NPAD |NPAD |BIG1 |BIG2 |BIG3 |BIG4 |
+     C3 |NPAD |NPAD |NPAD |NPAD |BIG1 |BIG2 |XTRA1|XTRA2|
         |  9  |  0  | C   | E   |     |     |     |     |
         +-----+-----+-----+-----+-----+-----+-----+-----+
      C4 |LPAD |LPAD |LPAD |LPAD |LPAD |     |     |     |
@@ -102,11 +102,11 @@ The distribution of rows and columns is as follows:
         |  1  |  2  |  1  |  2  |  1  |  2  |
         +-----+-----+-----+-----+-----+-----+
 
-* J6, BIG2/3/4
+* J6, BIG2, XTRA1/2
 
           C3    R6    C3    R7    C3    R8
         +-----+-----+-----+-----+-----+-----+
-        |BIG2 |BIG2 |BIG3 |BIG3 |BIG4 |BIG4 |
+        |BIG2 |BIG2 |XTRA1|XTRA1|XTRA2|XTRA2|
         |  1  |  2  |  1  |  2  |  1  |  2  |
         +-----+-----+-----+-----+-----+-----+
 
@@ -201,8 +201,8 @@ Total: 30 connections
 * 4 way hat: 42, 43, 44, 45, 46
 * 2 triple levers: 47, 48, 49, 50, 51, 52
 * 2 big buttons: 53, 54, 55, 56
-* 2 big lateral buttons: 57, 58, 59, 60
-* 2 master mode: 61, 62,
+* 2 extra buttons: 57, 58, 59, 60
+* 2 master mode: 61, 62
 * 2 rotary encoders: 63, 64, 65, 66, 67, 68
 * 6 axis: 69 - 80
 
@@ -236,7 +236,6 @@ Total: 30 connections
              3  PA  PA  G
              V  13  14  N
              3          D
-
 
 
 PB03 is being used for TRACE SWO, debug functionality. disableDebugPorts() must be invoked to use it as a normal GPIO.
