@@ -10,6 +10,7 @@
 
 void HIDJoystick::begin(void)
 {
+	HID.addOutputBuffer(&consumerData);
 }
 
 void HIDJoystick::end(void)
@@ -31,6 +32,11 @@ void HIDJoystick::safeSendReport()
 	if (!manualReport) {
 		sendReport();
 	}
+}
+
+uint8_t HIDJoystick::getConsumer(void)
+{
+	return consumer[0];
 }
 
 void HIDJoystick::_setButton(uint8_t button, bool val, uint8_t stack)

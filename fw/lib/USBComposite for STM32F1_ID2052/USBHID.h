@@ -29,7 +29,7 @@
 #define HID_MOUSE_REPORT_ID 1
 #define HID_KEYBOARD_REPORT_ID 2
 #define HID_CONSUMER_REPORT_ID 3
-#define HID_JOYSTICK_REPORT_ID 20
+#define HID_JOYSTICK_REPORT_ID 1
 
 #define HID_KEYBOARD_ROLLOVER 6
 
@@ -211,35 +211,42 @@
     0xc0      						/*  END_COLLECTION */
 
 #define HID_JOYSTICK_REPORT_DESCRIPTOR(...) \
-	0x05, 0x01,                    /* USAGE_PAGE (Generic Desktop) */ \
-		0x09, 0x04,                    /* USAGE (Joystick) */ \
-		0xa1, 0x01,                    /* COLLECTION (Application) */ \
-		0x85, 0x01,                    /*   REPORT_ID (1) */ \
-                0xa1, 0x00,                    /*   COLLECTION (Physical) */ \
-		0x09, 0x30,                    /*     USAGE (X) */ \
-		0x09, 0x31,                    /*     USAGE (Y) */ \
-		0x09, 0x32,                    /*     USAGE (Z) */ \
-                0x09, 0x33,                    /*     USAGE (RotX) */ \
-                0x09, 0x34,                    /*     USAGE (RotY) */ \
-                0x09, 0x35,                    /*     USAGE (RotZ) */ \
-		0x15, 0x00,                    /*     LOGICAL_MINIMUM (0) */ \
-		0x26, 0xff, 0x00,              /*     LOGICAL_MAXIMUM (255) */ \
-		0x75, 0x08,                    /*     REPORT_SIZE (8) */ \
-		0x95, 0x06,                    /*     REPORT_COUNT (6) */ \
-		0x81, 0x02,                    /*     INPUT (Data,Var,Abs) */ \
- 		0xc0,                          /*   END_COLLECTION */ \
-                0xa1, 0x00,                    /*   COLLECTION (Physical) */ \
-		0x05, 0x09,                    /*     USAGE_PAGE (Button) */ \
-		0x19, 0x01,                    /*     USAGE_MINIMUM (Button 1) */ \
-		0x29, 0x50,                    /*     USAGE_MAXIMUM (Button 80) */ \
-		0x15, 0x00,                    /*     LOGICAL_MINIMUM (0) */ \
-		0x25, 0x01,                    /*     LOGICAL_MAXIMUM (1) */ \
-		0x75, 0x01,                    /*     REPORT_SIZE (1) */ \
-		0x95, 0x60,                    /*     REPORT_COUNT (96) */ \
-		0x81, 0x02,                    /*     Input (Data, Variable, Absolute) */ \
- 		0xc0,                          /*   END_COLLECTION */	\
- 		0xc0                           /* END_COLLECTION */
+        0x05, 0x01,                    /* USAGE_PAGE (Generic Desktop) */ \
+        0x09, 0x04,                    /* USAGE (Joystick) */ \
+        0xa1, 0x01,                    /* COLLECTION (Application) */ \
+        0xa1, 0x00,                    /*   COLLECTION (Physical) */ \
+	0x85, 0x01,                    /*     REPORT_ID (1) */	\
+        0x09, 0x30,                    /*     USAGE (X) */ \
+        0x09, 0x31,                    /*     USAGE (Y) */ \
+        0x09, 0x32,                    /*     USAGE (Z) */ \
+        0x09, 0x33,                    /*     USAGE (RotX) */ \
+        0x09, 0x34,                    /*     USAGE (RotY) */ \
+        0x09, 0x35,                    /*     USAGE (RotZ) */ \
+        0x15, 0x00,                    /*     LOGICAL_MINIMUM (0) */ \
+        0x26, 0xff, 0x00,              /*     LOGICAL_MAXIMUM (255) */ \
+        0x75, 0x08,                    /*     REPORT_SIZE (8) */ \
+        0x95, 0x06,                    /*     REPORT_COUNT (6) */ \
+        0x81, 0x02,                    /*     INPUT (Data,Var,Abs) */ \
+        0x05, 0x09,                    /*     USAGE_PAGE (Button) */ \
+        0x19, 0x01,                    /*     USAGE_MINIMUM (Button 1) */ \
+        0x29, 0x50,                    /*     USAGE_MAXIMUM (Button 80) */ \
+        0x15, 0x00,                    /*     LOGICAL_MINIMUM (0) */ \
+        0x25, 0x01,                    /*     LOGICAL_MAXIMUM (1) */ \
+        0x75, 0x01,                    /*     REPORT_SIZE (1) */ \
+        0x95, 0x60,                    /*     REPORT_COUNT (96) */ \
+        0x81, 0x02,                    /*     Input (Data, Variable, Absolute) */ \
+        0xc0,                          /*   END_COLLECTION */   \
+        0xc0                           /* END_COLLECTION */
 
+
+        // 0xa1, 0x01,                    /*   COLLECTION (Application) */ \
+	// 0x85, 0x02,                    /*     REPORT_ID (2) */	\
+        // 0x05, 0x0C,                    /*     USAGE_PAGE (Consumer) */ \
+        // 0x75, 0x08,                    /*     REPORT_SIZE (8) */ \
+        // 0x95, 0x01,                    /*     REPORT_COUNT (1) */ \
+        // 0x91, 0x02,                    /*     OUTPUT (Data,Var,Abs) */ \
+        // 0xc0,                          /*   END_COLLECTION */   \
+        // 0xc0                           /* END_COLLECTION */
 
 #define RAWHID_USAGE_PAGE	0xFFC0 // recommended: 0xFF00 to 0xFFFF
 #define RAWHID_USAGE		0x0C00 // recommended: 0x0100 to 0xFFFF
@@ -479,7 +486,8 @@ public:
         adjustForHostCapsLock = state;
     }
     inline uint8 getLEDs(void) {
-        return leds[reportID != 0 ? 1 : 0];
+        // return leds[reportID != 0 ? 1 : 0];
+	    return leds[0];
     }
 	virtual size_t write(uint8_t k);
 	virtual size_t press(uint8_t k);
@@ -502,9 +510,13 @@ typedef struct {
 
 static_assert(sizeof(JoystickReport_t) == 19, "Wrong endianness/packing!");
 
+
 class HIDJoystick : public HIDReporter {
 protected:
 	JoystickReport_t joyReport;
+	uint8_t consumer[HID_BUFFER_ALLOCATE_SIZE(1,2)];
+	HIDBuffer_t consumerData;
+
 	bool manualReport = false;
 	bool reportNeeded = true;
 	void safeSendReport(void);
@@ -522,9 +534,12 @@ public:
 	void end(void);
 	void setButton(uint8_t button, bool val);
 	void setAxis(uint8_t idx, uint8_t val);
+	uint8_t getConsumer(void);
+
 	// void setDebug(uint8_t idx, uint16_t val);
 	HIDJoystick(USBHID& HID, uint8_t reportID=HID_JOYSTICK_REPORT_ID)
-		: HIDReporter(HID, (uint8_t*)&joyReport, sizeof(joyReport), reportID) {
+		: HIDReporter(HID, (uint8_t*)&joyReport, sizeof(joyReport), reportID),
+		  consumerData(consumer, HID_BUFFER_SIZE(1, 2), 2, HID_BUFFER_MODE_NO_WAIT) {
 		joyReport.reportID = 1;
 		for (unsigned char i = 0; i < (sizeof(joyReport.buttons) /
 					       sizeof(joyReport.buttons[0])); i++)
