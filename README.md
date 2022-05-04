@@ -23,4 +23,52 @@ It comprises:
 
 ## Bill of materials
 
-TBD
+* 1 STM32F103C6T6 microcontroller.
+
+* 4 ordered PCBs.
+
+* 31 cherry mx switches.
+
+* 2 KY-040 rotary encoders.
+
+* 6 regular 100k potentiometers.
+
+* 12 microswitches.
+
+* 2 MTS-103 ON-OFF-ON lever switches.
+
+* 2 19 mm momentary pushbuttons.
+
+* 12 JST XH 6 pin male PCB connectors.
+
+* 4 JST XH 10 pin male PCB connectors.
+
+* 2 JST XH 8 pin male PCB connectors.
+
+* 1 JST XH 4 pin male PCB connector.
+
+* 44 SMD 0805 diodes.
+
+* 1 JST XH 6 pin 10 mm dual headed cable.
+
+* 1 JST XH 6 pin 20 mm dual headed cable.
+
+* 1 JST XH 8 pin 10 mm dual headed cable.
+
+* 1 JST XH 10 pin 10 mm dual headed cable.
+
+* 8 JST XH 6 pin 20 mm single headed cable.
+
+* 2 JST XJ 10 pin 20mm single headed cable.
+
+* 1 USB breakout board.
+
+
+## Progress
+
+![alt text](https://github.com/mustang51/toro-ufc/blob/main/doc/progress1/1.jpg?raw=true)
+
+![alt text](https://github.com/mustang51/toro-ufc/blob/main/doc/progress1/2.jpg?raw=true)
+
+![alt text](https://github.com/mustang51/toro-ufc/blob/main/doc/progress1/3.jpg?raw=true)
+
