@@ -23,6 +23,8 @@ It comprises:
 
 ## Bill of materials
 
+* Around 400 grams of PLA for 3D printing.
+
 * 1 STM32F103C6T6 microcontroller.
 
 * 4 ordered PCBs.
@@ -63,8 +65,7 @@ It comprises:
 
 * 1 JST XH 4 pin 20 mm single headed cable.
 
-* 1 USB breakout board.
-
+* 1 mini-USB breakout board.
 
 ## Progress pictures
 
