@@ -379,8 +379,8 @@
       "idf": "",
       "netlist": "",
       "specctra_dsn": "",
-      "step": "../../../../../tmp/toroufc.step",
-      "vrml": "../../../../../tmp/toro.wrl"
+      "step": "../../../../../../tmp/toroufc-main.step",
+      "vrml": "../../../../../../tmp/main.wrl"
     },
     "page_layout_descr_file": ""
   },
