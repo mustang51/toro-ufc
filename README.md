@@ -59,7 +59,9 @@ It comprises:
 
 * 8 JST XH 6 pin 20 mm single headed cable.
 
-* 2 JST XJ 10 pin 20mm single headed cable.
+* 2 JST XJ 10 pin 20 mm single headed cable.
+
+* 1 JST XH 4 pin 20 mm single headed cable.
 
 * 1 USB breakout board.
 
@@ -72,3 +74,4 @@ It comprises:
 
 ![alt text](https://github.com/mustang51/toro-ufc/blob/main/doc/progress1/3.jpg?raw=true)
 
+![alt text](https://github.com/mustang51/toro-ufc/blob/main/doc/progress1/4.jpg?raw=true)
