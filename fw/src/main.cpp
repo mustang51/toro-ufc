@@ -7,7 +7,8 @@
 
 void setup()
 {
-//	disableDebugPorts();
+	disableDebugPorts();
+
 	heartbeat_setup();
 	joystick_setup();
 	rotary_setup();

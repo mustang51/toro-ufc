@@ -14,7 +14,7 @@ static uint8_t column_pins[] = {
 static uint8_t columns = sizeof(column_pins);
 
 static uint8_t row_pins[] = {
-	PB11, PB10, PB1, PB0, PA6, PA7, PB9, PB8
+	PB11, PB10, PB1, PB0, PA6, PA7, PB8, PB9
 };
 
 static uint8_t rows = sizeof(row_pins);

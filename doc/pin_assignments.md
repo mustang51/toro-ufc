@@ -187,8 +187,8 @@ Total: 30 connections
     COL1   |  PB05  PA03  | POT4
     SCL    |  PB06  PA02  | POT1
     SDA    |  PB07  PA01  | POT2
-    ROW8   |  PB08  PA00  | POT3
-    ROW7   |  PB09  PC15  | REN1-S
+    ROW7   |  PB08  PA00  | POT3
+    ROW8   |  PB09  PC15  | REN1-S
     USB5V  |  5V    PC14  | REN2-S
     N/A    |  GND   PC13  | LED
     N/A    |  3V3   VBAT  | N/A
@@ -198,3 +198,5 @@ Total: 30 connections
              3          D
 
 
+
+PB03 is being used for TRACE SWO, debug functionality. disableDebugPorts() must be invoked to use it as a normal GPIO.
