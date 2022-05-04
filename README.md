@@ -66,12 +66,20 @@ It comprises:
 * 1 USB breakout board.
 
 
-## Progress
+## Progress pictures
+
+Front panel.
 
 ![alt text](https://github.com/mustang51/toro-ufc/blob/main/doc/progress1/1.jpg?raw=true)
 
+Keyswitches PCBs mounted.
+
 ![alt text](https://github.com/mustang51/toro-ufc/blob/main/doc/progress1/2.jpg?raw=true)
 
+First versions of keycaps.
+
 ![alt text](https://github.com/mustang51/toro-ufc/blob/main/doc/progress1/3.jpg?raw=true)
+
+Detail of some PCBs.
 
 ![alt text](https://github.com/mustang51/toro-ufc/blob/main/doc/progress1/4.jpg?raw=true)
