@@ -84,3 +84,7 @@ First versions of keycaps.
 Detail of some PCBs.
 
 ![alt text](https://github.com/mustang51/toro-ufc/blob/main/doc/progress1/4.jpg?raw=true)
+
+First prototype.
+
+![alt text](https://photos.app.goo.gl/QciC3gtiZSFWSCfe9)

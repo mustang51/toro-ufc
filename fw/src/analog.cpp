@@ -9,7 +9,7 @@ static const unsigned int ANALOG_POLL_MS = 20;
 static const unsigned long EMA_MAX   = 128;
 static const unsigned long EMA_ALPHA = 32;
 
-static const uint8_t channels[] = {2, 1, 0, 3, 5, 4};
+static const uint8_t channels[] = {2, 1, 0, 3, 4, 5};
 static const unsigned int analogs = sizeof(channels);
 static const uint8_t buttons[][2] = {
 	{69, 70},

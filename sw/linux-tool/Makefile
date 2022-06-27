@@ -1,5 +1,5 @@
 CFLAGS = -g
-LDFLAGS = -lhidapi-libusb
+LDLIBS = -lhidapi-libusb
 
 all: tool
 
