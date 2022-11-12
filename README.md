@@ -69,6 +69,9 @@ It comprises:
 
 ## Progress pictures
 
+First releases.
+![alt text](https://github.com/mustang51/toro-ufc/blob/main/doc/progress1/5.jpg?raw=true)
+
 Front panel.
 
 ![alt text](https://github.com/mustang51/toro-ufc/blob/main/doc/progress1/1.jpg?raw=true)
@@ -84,6 +87,5 @@ First versions of keycaps.
 Detail of some PCBs.
 
 ![alt text](https://github.com/mustang51/toro-ufc/blob/main/doc/progress1/4.jpg?raw=true)
-
 
 [Video of working first prototype.](https://photos.app.goo.gl/QciC3gtiZSFWSCfe9)
