@@ -10,6 +10,7 @@ static const unsigned long EMA_MAX   = 128;
 static const unsigned long EMA_ALPHA = 32;
 
 static const uint8_t channels[] = {2, 1, 0, 3, 4, 5};
+static const bool channels_invert[] = {false, false, true, true, false, false};
 static const unsigned int analogs = sizeof(channels);
 static const uint8_t buttons[][2] = {
 	{69, 70},
@@ -50,7 +51,10 @@ void analog_loop(void)
 	next_millis += ANALOG_POLL_MS;
 
 	for (unsigned int a = 0; a < analogs; a++) {
-		ema_low_pass_filter(a, analogRead(channels[a]));
+		unsigned int reading = analogRead(channels[a]);
+		if (channels_invert[a])
+			reading = 4095 - reading;
+		ema_low_pass_filter(a, reading);
 		if (low_pass(a)) {
 			Joystick.setAxis(a, values[a]);
 			if (values[a] <= 5) {

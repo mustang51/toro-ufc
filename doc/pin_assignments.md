@@ -188,6 +188,17 @@ Total: 67 connections
 
 Total: 30 connections
 
+## Pots layout
+
+        +------------------+
+        |                  |
+     P3 |  P1         P2   | P6
+        |                  |
+        |                  |
+        |                  |
+     P4 |                  | P5
+        |                  |
+        +------------------+
 
 ## Rest of connections
 
